@@ -6,13 +6,12 @@ pipeline {
   }
   stages {
     stage('Test') {
-        agent {
+      agent {
         kubernetes {
           label 'nodejs-app-pod-2'
           yamlFile 'nodejs-pod.yaml'
         }
       }
-
       steps {
         checkout scm
         container('nodejs') {
